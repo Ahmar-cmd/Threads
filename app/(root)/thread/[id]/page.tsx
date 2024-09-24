@@ -20,7 +20,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   // console.log(thread)
 
   return (
-     <>
+  <>
     <ThreadCard
       key={thread._id}
       id={thread._id}
@@ -56,7 +56,7 @@ const page = async ({ params }: { params: { id: string } }) => {
       />
       ))}
     </div>
-     </>
+  </>
   );
 };
 

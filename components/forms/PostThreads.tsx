@@ -41,6 +41,7 @@ const PostThreads = ({ userId }: Props) => {
     
     // 2. Define a submit handler.
     const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
+      {console.log(organization)}
         await createThread({
          text: values.thread,
          author: userId,

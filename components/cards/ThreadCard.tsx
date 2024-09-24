@@ -1,5 +1,7 @@
+import { formatDateString } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import DeleteThread from "../forms/DeleteThread";
 
 
 interface Props{
@@ -26,7 +28,7 @@ interface Props{
   isComment?: boolean;
 }
 
-const ThreadCard = ({
+const ThreadCard = async ({
   id,
   currentUserId,
   parentId,
@@ -35,12 +37,15 @@ const ThreadCard = ({
   community,
   createdAt,
   comments,
-  isComment=true,
+  isComment,
 } : Props) => {
+
+
   return (
     <article className={`flex w-full flex-col rounded-xl ${
       isComment ? "px-0 xs:px-7" : "bg-dark-2 p-7"
-    }`}>
+    }`}
+    >
       <div className='flex items-start justify-between'>
         <div className="flex w-full flex-1 flex-row gap-4">
 
@@ -113,11 +118,37 @@ const ThreadCard = ({
                </p>
              </Link>
             )}
-          </div>
-          
+          </div>    
           </div> 
-        </div>
+        </div>       
+              {/* <DeleteThread
+               threadId={JSON.stringify(id)}
+               currentUserId={currentUserId}
+               authorId={author.id}
+               parentId={parentId}
+               isComment={isComment}
+               /> */}
       </div>
+      { !isComment && community && (
+        <Link
+          href={`/communities/${community.id}`}
+          className='mt-5 flex items-center'
+        >
+          <p className='text-subtle-medium text-gray-1'>
+            {formatDateString(createdAt)}
+            - {" "}{community.name} Community
+            {/* <span className="text-primary-500 ml-3">Community: {community.name}</span> */}
+          </p>
+
+          <Image
+            src={community.image}
+            alt={community.name}
+            width={14}
+            height={14}
+            className='ml-1 rounded-full object-cover'
+          />
+        </Link>
+      )} 
     </article>
   )
 }
