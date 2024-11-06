@@ -58,9 +58,9 @@ function CommunityCard({ id, name, username, imgUrl, bio, members }: Props) {
                 } rounded-full object-cover`}
               />
             ))}
-            {members.length > 3 && (
+            {members.length > 1 && (
               <p className='ml-1 text-subtle-medium text-gray-1'>
-                {members.length}+ Users
+                {members.length - 1}+ Users
               </p>
             )}
           </div>

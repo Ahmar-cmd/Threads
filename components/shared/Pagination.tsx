@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-
 import { Button } from "../ui/button";
 
 interface Props {
@@ -11,8 +10,6 @@ interface Props {
 }
 
 function Pagination({ pageNumber, isNext, path }: Props) {
-  // console.log(pageNumber, isNext);
-
   const router = useRouter();
 
   const handleNavigation = (type: string) => {

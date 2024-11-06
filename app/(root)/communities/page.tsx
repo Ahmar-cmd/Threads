@@ -1,4 +1,3 @@
-
 import CommunityCard from "@/components/cards/CommunityCard";
 import Searchbar from "@/components/shared/Searchbar";
 import { fetchCommunities } from "@/lib/actions/community.actions";
@@ -19,7 +18,7 @@ const page = async ({
 
   const result = await fetchCommunities({
     searchString: searchParams.q,
-    pageNumber: searchParams?.page ? +searchParams.page : 1 ,
+    pageNumber: searchParams?.page ? +searchParams.page : 1,
     pageSize: 20,
   });
 

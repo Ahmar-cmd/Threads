@@ -20,7 +20,7 @@ const page = async ({
     userId: user.id,
     searchString: searchParams.q,
     pageNumber: searchParams?.page ? +searchParams.page : 1,
-    pageSize: 20
+    pageSize: 20,
   });
 
   return (

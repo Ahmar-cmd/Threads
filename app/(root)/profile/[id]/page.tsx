@@ -1,11 +1,11 @@
-import ProfileHeader from "@/components/shared/ProfileHeader";
-import ThreadsTab from "@/components/shared/ThreadsTab";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { profileTabs } from "@/constants";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs/server";
-import Image from "next/image";
 import { redirect } from "next/navigation";
+import Image from "next/image";
+import { profileTabs } from "@/constants";
+import ThreadsTab from "@/components/shared/ThreadsTab";
+import ProfileHeader from "@/components/shared/ProfileHeader";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 
 const page = async ({ params }: { params: { id: string } }) => {
@@ -16,7 +16,6 @@ const page = async ({ params }: { params: { id: string } }) => {
 
   const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
-//   console.log(userInfo);
 
   return (
     <section>
@@ -27,6 +26,7 @@ const page = async ({ params }: { params: { id: string } }) => {
        username={userInfo.username}
        imgUrl={userInfo.image}
        bio={userInfo.bio}
+       type="User"
       />
 
     <div className='mt-9'>

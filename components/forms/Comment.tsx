@@ -13,9 +13,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 import { CommentValidation } from "@/lib/validations/thread"
-import { addCommentToThread, createThread } from "@/lib/actions/thread.actions"
+import { addCommentToThread } from "@/lib/actions/thread.actions"
 import { Input } from "../ui/input"
 import Image from "next/image"
 
@@ -23,10 +23,9 @@ interface Props {
   threadId: string;
   currentUserImg: string;
   currentUserId: string;
-}
+};
 
 const Comment = ({ threadId, currentUserImg, currentUserId }: Props ) => {
-    const router = useRouter();
     const pathname = usePathname();
     
     const form = useForm<z.infer<typeof CommentValidation>>({

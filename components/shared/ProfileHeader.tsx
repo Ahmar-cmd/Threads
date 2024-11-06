@@ -1,5 +1,6 @@
-import Link from "next/link";
 import Image from "next/image";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 interface Props {
   accountId: string;
@@ -21,36 +22,35 @@ const ProfileHeader = ({
   type,
 }: Props) => {
   return (
-    <div className='flex w-full flex-col justify-start'>
-      <div className='flex items-center justify-between'>
-        <div className='flex items-center gap-3'>
-
-          <div className='relative h-20 w-20 object-cover'>
+    <div className="flex w-full flex-col justify-start p-3 bg-dark-2">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="relative h-20 w-20 object-cover">
             <Image
-             src={imgUrl}
-             alt='logo'
-             fill
-             className='rounded-full object-cover shadow-2xl'
+              src={imgUrl}
+              alt="logo"
+              fill
+              className="rounded-full object-cover shadow-2xl"
             />
           </div>
 
-          <div className='flex-1'>
-            <h2 className='text-left text-heading3-bold text-light-1'>
-               {name}
+          <div className="flex-1">
+            <h2 className="text-left text-heading3-bold text-light-1">
+              {name}
             </h2>
-            <p className='text-base-medium text-gray-1'>
-              @{username}
-            </p>
+            <p className="text-base-medium text-gray-1">@{username}</p>
           </div>
         </div>
-        {/* TOD0: community thing  */}
-      </div>
-        <p className='mt-6 max-w-lg text-base-regular text-light-2'>
-          {bio}
-        </p>
-        <div className='mt-12 h-0.5 w-full bg-dark-3' />
-    </div>
-  )
-}
 
-export default ProfileHeader
+          <Link href="/onboarding">
+            <Button className="user-card_btn">Edit</Button>
+          </Link>
+          
+      </div>
+      <p className="mt-6 ml-2 max-w-lg text-base-regular text-light-2">{bio}</p>
+      <div className="mt-12 h-0.5 w-full bg-dark-3" />
+    </div>
+  );
+};
+
+export default ProfileHeader;
